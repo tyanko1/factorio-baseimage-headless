@@ -6,8 +6,13 @@ RUN apt-get update \
   && apt-get install -y curl \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ADD factorio-init /opt/factorio
-   
-RUN  mv /opt/factorio/config.example /opt/factorio/config
+WORKDIR /opt/factorio
+RUN curl -L -k https://www.factorio.com/get-download/0.12.33/headless/linux64 | tar --strip-components=1 -xzf -
 
-WORKDIR /factorio
+ADD factorio-init /etc 
+ADD config /etc/factorio-init
+
+VOLUME ["/factorio/saves"]
+VOLUME ["/factorio/mods"]
+
+EXPOSE 34197/udp

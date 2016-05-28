@@ -4,7 +4,8 @@ FROM phusion/baseimage:latest
 
 RUN apt-get update \
   && apt-get install -y curl \
-  && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+  && apt-get install -y screen \
+  && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
 RUN mkdir /opt/factorio \
     && cd /opt/factorio \
@@ -12,14 +13,15 @@ RUN mkdir /opt/factorio \
 
 ADD factorio-init /opt/factorio-init 
 ADD config /opt/factorio-init/config
-ADD save.zip /opt/factorio/saves/factorio-init-save.zip
+ADD factorio-init-save.zip /opt/factorio/saves/factorio-init-save.zip
+ADD config.ini.normal /opt/factorio/config/config.ini 
 
-#RUN useradd -U -s /bin/bash factorio \
-#    && gpasswd -a factorio sudo \
-#    && chown -R factorio:factorio /opt/factorio \
-#    && chown -R factorio:factorio /opt/factorio-init
+RUN useradd -U -s /bin/bash factorio \
+    && gpasswd -a factorio sudo \
+    && chown -R factorio:factorio /opt/factorio \
+    && chown -R factorio:factorio /opt/factorio-init
 
-#USER factorio
+USER factorio
 WORKDIR /opt/factorio
 
 VOLUME ["/factorio/saves"]

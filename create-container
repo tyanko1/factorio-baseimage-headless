@@ -1,0 +1,6 @@
+#!/bin/bash
+docker run -d \
+		-p 34197:34197/udp \
+                -v /home/terry/docker/factorio-baseimage/users:/var/factorio/users \
+		--name factorio \
+		factorio-baseimage:0.1.0_1

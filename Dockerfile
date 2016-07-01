@@ -19,4 +19,4 @@ RUN ln -s /var/factorio/users/tdyanko1/saves /opt/factorio/saves
 
 EXPOSE 34197/udp
 
-CMD /opt/factorio/bin/x64/factorio --start-server fresh-save 
+CMD /opt/factorio/bin/x64/factorio --start-server fresh_save 

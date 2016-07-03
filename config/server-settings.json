@@ -1,0 +1,23 @@
+{
+  "name": "US East Dedicated Public Server",
+  "description": "This is a dedicated server exposed to the public.",
+  "tags": ["game", "tags"],
+  "max_players": "4",
+
+  "_comment_visibility": ["public: Game will be published on the official Factorio matching server",
+                          "lan: Game will be broadcast on LAN",
+                          "hidden: Game will not be published anywhere"],
+  "visibility": "public",
+
+  "_comment_credentials": "Your factorio.com login credentials. Required for games with visibility public",
+  "username": "eventualmango",
+  "password": "tewthra3W",
+
+  "_comment_token": "Authentication token. May be used instead of 'password' above.",
+  "token": "",
+
+  "game_password": "",
+
+  "_comment_verify_user_identity": "When set to true, the server will only allow clients that have a valid Factorio.com account",
+  "verify_user_identity": true
+}

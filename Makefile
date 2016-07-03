@@ -1,8 +1,8 @@
 NAME = factorio-baseimage
-VERSION = 0.1.0_1
+VERSION = 0.13.2_1
 
 build:
 	docker build -t $(NAME):$(VERSION) . 
 
 test:
-	bundle exec rake spec
+	rspec spec

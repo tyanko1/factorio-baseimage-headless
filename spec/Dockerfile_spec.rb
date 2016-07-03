@@ -19,6 +19,10 @@ describe 'Dockerfile' do
   it 'create the factorio directories' do
     expect(file('/opt/factorio')).to exist
   end
+  
+  it 'create the factorio init directory' do
+    expect(file('/etc/service/factorio')).to exist
+  end
 
   it 'should expose the correct ports' do
     expect(@image.json['ContainerConfig']['ExposedPorts']).to include("34197/udp")
@@ -28,7 +32,11 @@ describe 'Dockerfile' do
  #   it { should have_volume('/var/factorio/users') }
  # end
 
-  it 'should mount the users volume' do
-    expect(file('/var/factorio/users')).to exist
+  it 'should mount the config volume' do
+    expect(file('/opt/factorio/config')).to exist
+  end 
+  
+  it 'should mount the save volume' do
+    expect(file('/opt/factorio/saves')).to exist
   end 
 end

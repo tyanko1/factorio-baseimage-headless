@@ -4,13 +4,13 @@ FROM phusion/baseimage:latest
 
 RUN apt-get update \
   && apt-get install -y wget \
-  && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
+  && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN cd /opt/ \
-    && wget https://www.factorio.com/get-download/0.13.2/headless/linux64 -O factorio_0.13.2 \
-    && tar -xzf factorio_0.13.2 \
-    && rm factorio_0.13.2 
- 
+    && wget https://www.factorio.com/get-download/0.13.16/headless/linux64 -O factorio_0.13.16 \
+    && tar -xzf factorio_0.13.16  \
+    && rm factorio_0.13.16
+
 WORKDIR /opt/factorio
 
 VOLUME ["/opt/factorio/saves"]

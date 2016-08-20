@@ -1,8 +1,12 @@
 #!/bin/bash
+
+VERSION=0.13.17_1
+GIT_ROOT=$(git rev-parse --show-toplevel)
+
 docker run -d \
                 --restart=always \
 		-p 34197:34197/udp \
-                -v /home/terry/docker/factorio-baseimage/config:/opt/factorio/config \
-                -v /home/terry/docker/factorio-baseimage/saves:/opt/factorio/saves \
+                -v ${GIT_ROOT}/config:/opt/factorio/config \
+                -v ${GIT_ROOT}/saves:/opt/factorio/saves \
 		--name factorio \
-		factorio-baseimage:0.13.2_1
+		factorio-baseimage:${VERSION}

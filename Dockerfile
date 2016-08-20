@@ -5,6 +5,7 @@ FROM phusion/baseimage:latest
 ENV HEADLESS_VERSION=0.13.17
 ENV PLAYERNAME=player
 ENV RELEASE=experimental
+ENV PORT=34197
 
 RUN apt-get update \
   && apt-get install -y wget \
@@ -20,7 +21,7 @@ WORKDIR /opt/factorio
 VOLUME ["/opt/factorio/saves"]
 VOLUME ["/opt/factorio/config"]
 
-EXPOSE 34197/udp
+EXPOSE ${PORT}/udp
 
 ADD run /etc/service/factorio/
 

@@ -1,4 +1,38 @@
 #!/bin/bash
 
-/opt/factorio/bin/x64/factorio --create /opt/factorio/saves/initial-save --map-gen-settings /opt/factorio/config/map-gen-settings.json;
-/opt/factorio/bin/x64/factorio --server-settings /opt/factorio/config/server-settings.json --start-server /opt/factorio/saves/initial-save.zip
+# An init script to start and stop the Factorio server
+
+FACTORIO="/opt/factorio/bin/x64/factorio"
+SAVE_DIR="/opt/factorio/saves"
+SETTINGS_DIR="/opt/factorio/config"
+
+usage(){
+  echo "Available commands:"
+  echo -e "  start \t\t Starts the server"
+  echo -e "  stop  \t\t Stops the server"
+  echo -e "  generate \t\t Create a new map"
+}
+
+generate() {
+  exec ${FACTORIO} --create ${SAVE_DIR}/initial-save \
+  --map-gen-setting ${SETTINGS_DIR}/server-settings.json
+}
+
+start() {
+  exec ${FACTORIO} --server-settings ${SETTINGS_DIR}/server-settings.json \
+  --start-server ${SAVE_DIR}/initial-save.zip
+}
+
+case "$1" in
+  start)
+    start # starts the server
+  ;;
+  stop)
+    stop # stops the server
+  ;;
+  generate)
+    generate # stops the server
+  ;;
+  * ) # displays usage instructions
+    usage
+esac

@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# An init script to start and stop the Factorio server
+
+FACTORIO="/opt/factorio/bin/x64/factorio"
+SAVE_DIR="/opt/factorio/saves"
+SETTINGS_DIR="/opt/factorio/config"
+
+usage(){
+  echo "Available commands:"
+  echo -e "  generate \t\t Creates a new map"
+  echo -e "  start-new  \t\t Generates a new map and starts the server"
+  echo -e "  resume \t\t Start the server and resume a previous game"
+}
+
+generate() {
+  ${FACTORIO} --create ${SAVE_DIR}/initial-save \
+  --map-gen-setting ${SETTINGS_DIR}/server-settings.json
+}
+
+start-new() {
+  ${FACTORIO} --create ${SAVE_DIR}/initial-save \
+  --map-gen-setting ${SETTINGS_DIR}/server-settings.json &&
+  ${FACTORIO} --server-settings ${SETTINGS_DIR}/server-settings.json \
+  --start-server ${SAVE_DIR}/initial-save.zip
+}
+
+resume() {
+  ${FACTORIO} --server-settings ${SETTINGS_DIR}/server-settings.json \
+  --start-server ${SAVE_DIR}/_autosave1.zip
+}
+
+case "$1" in
+  generate)
+    generate # starts the server
+  ;;
+  stop)
+    stop # stops the server (Functionality not yet implemented)
+  ;;
+  start-new)
+    start-new # stops the server
+  ;;
+  resume)
+    resume # resumes from a previous save
+  ;;
+  * ) # displays usage instructions
+    usage
+esac

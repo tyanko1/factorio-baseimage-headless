@@ -1,38 +1,7 @@
 #!/bin/bash
 
-# An init script to start and stop the Factorio server
-
-FACTORIO="/opt/factorio/bin/x64/factorio"
-SAVE_DIR="/opt/factorio/saves"
-SETTINGS_DIR="/opt/factorio/config"
-
-usage(){
-  echo "Available commands:"
-  echo -e "  start \t\t Starts the server"
-  echo -e "  stop  \t\t Stops the server"
-  echo -e "  generate \t\t Create a new map"
-}
-
-generate() {
-  exec ${FACTORIO} --create ${SAVE_DIR}/initial-save \
-  --map-gen-setting ${SETTINGS_DIR}/server-settings.json
-}
-
-start() {
-  exec ${FACTORIO} --server-settings ${SETTINGS_DIR}/server-settings.json \
-  --start-server ${SAVE_DIR}/initial-save.zip
-}
-
-case "$1" in
-  start)
-    start # starts the server
-  ;;
-  stop)
-    stop # stops the server
-  ;;
-  generate)
-    generate # stops the server
-  ;;
-  * ) # displays usage instructions
-    usage
-esac
+if [ -e /opt/factorio/saves/initial-save.zip ] && [ -e /opt/factorio/saves/_autosave*.z-ip ]; then
+  exec /opt/factorio/bin/factorio-init resume
+else
+  exec /opt/factorio/bin/factorio-init start-new
+fi

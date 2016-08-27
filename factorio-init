@@ -27,7 +27,7 @@ start-new() {
 
 resume() {
   cd /opt/factorio/saves/;
-  LATEST_SAVE=$(echo ls -t | head -n1);
+  LATEST_SAVE=$(ls -t | grep autosave | head -n1);
   ${FACTORIO} --server-settings ${SETTINGS_DIR}/server-settings.json \
   --start-server ${SAVE_DIR}/${LATEST_SAVE}
 }

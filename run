@@ -1,7 +1,4 @@
 #!/bin/bash
 
-if [ -e /opt/factorio/saves/_autosave*.zip ]; then
-  exec /opt/factorio/bin/factorio-init resume
-else
-  exec /opt/factorio/bin/factorio-init start-new
-fi
+[ -e "/opt/factorio/saves/_autosave1.zip" ] &&
+exec /opt/factorio/bin/factorio-init resume || exec /opt/factorio/bin/factorio-init start-new

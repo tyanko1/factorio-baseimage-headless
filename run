@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -e /opt/factorio/saves/initial-save.zip ] && [ -e /opt/factorio/saves/_autosave*.z-ip ]; then
+if [ -e /opt/factorio/saves/_autosave*.zip ]; then
   exec /opt/factorio/bin/factorio-init resume
 else
   exec /opt/factorio/bin/factorio-init start-new

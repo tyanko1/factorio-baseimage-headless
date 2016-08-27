@@ -1,5 +1,5 @@
 NAME = factorio-baseimage
-VERSION = 0.13.17_1
+VERSION = 0.14.1_1
 
 test:
 	rspec spec
@@ -7,4 +7,8 @@ test:
 
 build:  test
 	docker build -t $(NAME):$(VERSION) .
+	docker tag factorio-baseimage:$(VERSION) factoriohub.io:5000/factorio-baseimage:$(VERSION)
+
+push:	push
+	docker push factoriohub.io:5000/factorio-baseimage:$(VERSION)
 

@@ -2,7 +2,7 @@ FROM phusion/baseimage:latest
 
 #This docker contains all the necessary components to spin up a Factorio instance
 
-ENV HEADLESS_VERSION=0.13.17
+ENV HEADLESS_VERSION=0.14.1
 ENV PLAYERNAME=player
 ENV RELEASE=experimental
 

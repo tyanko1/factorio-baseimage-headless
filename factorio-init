@@ -26,8 +26,10 @@ start-new() {
 }
 
 resume() {
+  cd /opt/factorio/saves/;
+  LATEST_SAVE=$(echo ls -t | head -n1);
   ${FACTORIO} --server-settings ${SETTINGS_DIR}/server-settings.json \
-  --start-server ${SAVE_DIR}/_autosave1.zip
+  --start-server ${SAVE_DIR}/${LATEST_SAVE}
 }
 
 case "$1" in

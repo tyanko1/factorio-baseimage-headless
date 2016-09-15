@@ -1,5 +1,5 @@
 NAME = factorio-baseimage
-VERSION = 0.14.1_3
+VERSION = 0.14.5_2_experimental
 
 test:
 	rspec spec

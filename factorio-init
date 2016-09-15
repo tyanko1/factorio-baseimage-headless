@@ -20,7 +20,7 @@ generate() {
 
 start-new() {
   ${FACTORIO} --create ${SAVE_DIR}/initial-save \
-  --map-gen-setting ${SETTINGS_DIR}/server-settings.json &&
+  --map-gen-setting ${SETTINGS_DIR}/map-gen-settings.json &&
   ${FACTORIO} --server-settings ${SETTINGS_DIR}/server-settings.json \
   --start-server ${SAVE_DIR}/initial-save.zip
 }

@@ -1,3 +1,1 @@
-require 'serverspec'
-require 'docker-api'
-require 'rspec'
+require 'dockerspec/serverspec'

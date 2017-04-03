@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=0.14.3_1
+VERSION=0.14.22_1
 GIT_ROOT=$(git rev-parse --show-toplevel)
 
 docker run -d \
@@ -9,4 +9,4 @@ docker run -d \
                 -v ${GIT_ROOT}/config:/opt/factorio/config \
                 -v ${GIT_ROOT}/saves:/opt/factorio/saves \
 		--name factorio \
-		factorio-baseimage:${VERSION}
+		factorio-stable:${VERSION}

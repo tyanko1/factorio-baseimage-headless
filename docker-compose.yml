@@ -1,7 +1,7 @@
 headless-server:
   image: factoriohub.io:5000/factorio-stable:0.14.22_1
   ports:
-    - "34196:34197/udp"
+    - "34197:34197/udp"
   volumes:
     - "/var/users/public1/config:/opt/factorio/config"
     - "/var/users/public1/saves:/opt/factorio/saves"
